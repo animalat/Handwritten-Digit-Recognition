@@ -6,4 +6,4 @@ Uses:
 tensorflow,
 numpy,
 matplotlib,
-opencv-python,
+opencv-python
