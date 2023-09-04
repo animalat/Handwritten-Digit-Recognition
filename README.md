@@ -1,2 +1,9 @@
 # Handwritten-Digit-Recognition
-A project written in Python to recognize handwritten numbers.
+A project that is written in Python to recognize handwritten numbers.
+
+
+Uses:
+tensorflow
+numpy
+matplotlib
+opencv-python
