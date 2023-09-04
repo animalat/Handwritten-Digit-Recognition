@@ -3,7 +3,7 @@ A project that is written in Python to recognize handwritten numbers.
 
 
 Uses:
-tensorflow
-numpy
-matplotlib
-opencv-python
+tensorflow,
+numpy,
+matplotlib,
+opencv-python,
