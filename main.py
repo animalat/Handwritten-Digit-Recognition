@@ -18,6 +18,8 @@ x_train = tf.keras.utils.normalize(x_train, axis=1) #normalize training data
 x_test = tf.keras.utils.normalize(x_test, axis=1) #normalize testing data
 
 
+
+"""
 #build neural network model
 model = tf.keras.models.Sequential() #Sequential() is the simplest model, a feed-forward model
 
@@ -34,3 +36,26 @@ model.compile(optimizer='adam', loss = 'sparse_categorical_crossentropy', metric
 model.fit(x_train, y_train, epochs=3) #train model, epochs is how many times model sees same information
 
 model.save('digits.model')
+"""
+
+#load model
+model = tf.keras.models.load_model('digits.model')
+
+#test model
+loss, accuracy = model.evaluate(x_test, y_test)
+print(loss) #loss should be low, accuracy should be high
+print(accuracy)
+
+#make predictions
+
+for files in os.listdir("testing data"):
+    if files.endswith('.jpeg'):
+        try:
+            img = cv2.imread(os.path.join("testing data", files))[:,:,0] #read image, convert to grayscale
+            img = np.invert(np.array([img])) #invert image, convert to numpy array
+            prediction = model.predict(img) #make prediction
+            print("The number is probably", np.argmax(prediction), " ", "the number is actually", files) #print prediction
+            plt.imshow(img[0], cmap=plt.cm.binary) #show image
+            plt.show()
+        except:
+            print("Error reading image")
